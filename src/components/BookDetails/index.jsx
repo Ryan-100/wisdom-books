@@ -4,6 +4,12 @@ import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Loader from "../Loader";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from "../../redux/actions/favourite.action";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 const URL = "https://www.dbooks.org/api/book/";
 
@@ -13,6 +19,8 @@ const BookDetails = () => {
   const [error, setError] = useState(false);
   const [book, setBook] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { favorites } = useSelector((state) => state.favorites);
 
   useEffect(() => {
     setLoading(true);
@@ -30,6 +38,19 @@ const BookDetails = () => {
 
     fetchRecentBook();
   }, [id]);
+
+  const handleAddToFavorites = (book) => {
+    dispatch(addToFavorites(book));
+  };
+
+  const handleRemoveFromFavorites = (book) => {
+    const updatedFavorites = favorites.filter((fav) => fav.id !== book.id);
+    dispatch(removeFromFavorites(updatedFavorites));
+  };
+
+  const favChecker = (id) => {
+    return favorites.some((book) => book.id === id);
+  };
 
   if (loading)
     return (
@@ -64,8 +85,19 @@ const BookDetails = () => {
           className="max-w-[200px] md:max-w-[400px] h-auto object-cover"
         />
         <div className="flex flex-col space-y-5 lg:ml-[5rem]">
-          <div className="header">
+          <div className="header flex justify-between">
             <span className="title underline">{book?.title}</span>
+            {favChecker(book?.id) ? (
+              <AiFillHeart
+                onClick={() => handleRemoveFromFavorites(book)}
+                className="self-end cursor-pointer text-red-600 text-[24px]"
+              />
+            ) : (
+              <AiOutlineHeart
+                onClick={() => handleAddToFavorites(book)}
+                className="self-end cursor-pointer text-[24px]"
+              />
+            )}
           </div>
           <div className="text-[18px]">
             <span>{book?.description}</span>
