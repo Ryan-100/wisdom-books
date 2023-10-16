@@ -70,7 +70,7 @@ const BookDetails = () => {
     );
 
   return (
-    <div className="flex flex-col  p-[3rem]  md:p-[5rem] h-screen">
+    <div className="flex flex-col  p-[3rem]  md:p-[5rem] h-[120vh] lg:h-screen">
       <button
         className="flex items-center justify-center space-x-4 btn-outline"
         onClick={() => navigate(-1)}
