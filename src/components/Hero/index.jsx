@@ -9,9 +9,11 @@ const Hero = () => {
         backgroundImage: 'url("/img/hero.png")',
       }}
     >
-      <h2 className="title text-4xl capitalize">find your book of choice.</h2>
+      <h2 className="title text-2xl lg:text-4xl capitalize">
+        find your book of choice.
+      </h2>
       <br />
-      <p className="font-light text-lg w-4/6 md:w-3/5">
+      <p className="font-light lg:text-xl text-lg w-4/6 md:w-3/5">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam beatae
         sapiente quibusdam consequatur perspiciatis facere laboriosam non
         nesciunt at id repudiandae, modi iste? Eligendi, rerum!

@@ -20,15 +20,15 @@ input{
 }
 
 .header{
-  @apply font-bold text-[22px] md:text-3xl
+  @apply font-bold  text-[22px] md:text-3xl
 }
 
 .title{
-  @apply font-bold 
+  @apply font-bold text-[14px] md:text-base
 }
 
 .authors{
-  @apply text-sm font-light text-ellipsis
+  @apply text-[12px] md:text-sm font-light text-ellipsis 
 }
 
 .btn{
