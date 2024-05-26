@@ -15,6 +15,7 @@ const URL = "https://www.dbooks.org/api/book/";
 
 const BookDetails = () => {
   const { id } = useParams();
+  console.log(id, "book id");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [book, setBook] = useState(null);
